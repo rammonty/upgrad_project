@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'main', credentialsId: 'c004241e-d05a-4da2-b03d-377a0ceb46ce', url: "${REPO_URL}"
+                git branch: 'main', credentialsId: 'git', url: "${REPO_URL}"
             }
         }
 
@@ -39,7 +39,7 @@ pipeline {
 
         stage('Deploy to App Host') {
             steps {
-                sshagent (credentials: ['174d3553-86ee-4046-b902-c8d9523003e4']) {
+                sshagent (credentials: ['app']) {
                     sh '''
                         # SSH into the app server
                         ssh root@${APP_HOST} '
