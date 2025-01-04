@@ -1,5 +1,5 @@
 # Dockerfile
-FROM node:16.20.1-alpine
+FROM node:10.15.1-alpine
 
 # Set the working directory
 WORKDIR /app
@@ -15,4 +15,4 @@ COPY . .
 EXPOSE 3000
 
 # Start the application
-CMD ["nodemon", "index.js"]
+CMD ["yarn", "start"]
