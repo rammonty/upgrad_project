@@ -6,6 +6,7 @@ pipeline {
         IMAGE_TAG = "movies-app:${BUILD_NUMBER}"
         ECR_REPO = "upgread/assignment"
         APP_HOST = "172.31.17.88"
+        DOCKERFILE_DIR = "movie-app/client"
     }
 
     stages {
@@ -19,6 +20,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        cd ${DOCKERFILE_DIR}
                         # Build the Docker image
                         docker build -t ${IMAGE_TAG} .
                         
